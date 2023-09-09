@@ -18,8 +18,9 @@ import java.util.Collections;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User implements UserDetails {
-    @GeneratedValue
+
     @Id
+    @GeneratedValue
     private Long id;
     private String username;
     private String password;

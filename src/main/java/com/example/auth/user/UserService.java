@@ -1,5 +1,6 @@
 package com.example.auth.user;
 
+import com.example.auth.user.exception.AlreadyRegisteredUserException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
