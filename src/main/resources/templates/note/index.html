@@ -6,73 +6,57 @@
     <head th:insert="fragments.html::header"></head>
 </head>
 <body>
-<header th:insert="fragments.html::nav"></header>
-<!-- User Only -->
-<div class="container">
-    <h1>Note</h1>
-    <!-- Create Note Modal Button -->
-    <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#newNoteModal"
-            data-bs-whatever="@mdo">
-        Create New Note
-    </button>
-    <!-- Create New Note Modal -->
-    <div class="modal fade"
-        id="newNoteModal"
-        tabindex="-1"
-        aria-labelledby="newNoteModalLabel"
-        aria-hidden="true"
-    >
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="newNoteModalLabel">Create New Note</h5>
-                    <button type="button"
-                            class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close">
-                    </button>
-                </div>
-                <form th:action="@{/note}" method="post">
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="title" class="col-form-label">Title</label>
-                            <input type="text" class="form-control" id="title" name="title">
-                        </div>
-                        <div class="mb-3">
-                            <label for="content" class="col-form-label">Contents</label>
-                            <textarea class="form-control" rows="20" id="content" name="content"></textarea>
-                        </div>
+    <header th:insert="fragments.html::nav"></header>
+    <div class="container">
+        <h1>Note</h1>
+        <!-- Create Note Modal Button -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newNoteModal" data-bs-whatever="@mdo">
+            Create New Note
+        </button>
+        <!-- Create New Note Modal -->
+        <div class="modal fade" id="newNoteModal" tabindex="-1" aria-labelledby="newNoteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="newNoteModalLabel">Create New Note</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!--Search Note Contents -->
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="border border-dark" th:each="note : ${notes}">
-                <h2 th:text="${note.title}"></h2>
-                <div>
-                    <p th:text="${note.content}" style="white-space: pre-wrap;"></p>
-                    <form th:action="@{/note}" th:method="delete">
-                        <input type="hidden" name="id" th:value="${note.id}">
-                        <button type="submit" class="btn btn-secondary">Delete</button>
-                        <!-- created date -->
-                        <span style="margin: 10px 0px;">Posted On<strong th:text="${#temporals.format(note.createdAt, 'yyyy-MM-dd')}"></strong></span>
+                    <form th:action="@{/note}" method="post">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="title" class="col-form-label">Title</label>
+                                <input type="text" class="form-control" id="title" name="title">
+                            </div>
+                            <div class="mb-3">
+                                <label for="content" class="col-form-label">Contents</label>
+                                <textarea class="form-control" rows="20" id="content" name="content"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
+        <!--Search Note Contents -->
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="border border-dark" th:each="note : ${notes}">
+                    <h2 th:text="${note.title}"></h2>
+                    <div>
+                        <p th:text="${note.content}" style="white-space: pre-wrap;"></p>
+                        <form th:action="@{/note}" th:method="delete">
+                            <input type="hidden" name="id" th:value="${note.id}">
+                            <button type="submit" class="btn btn-secondary">Delete</button>
+                            <!-- created date -->
+                            <span style="margin: 10px 0px;">Posted On<strong th:text="${#temporals.format(note.createdAt, 'yyyy-MM-dd')}"></strong></span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 </body>
 </html>

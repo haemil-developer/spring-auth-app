@@ -8,79 +8,40 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
 </head>
 <body>
-<!-- fragment navigation bar -->
-<div th:fragment="nav">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <p class="nav-link active"
-                           sec:authorize="isAuthenticated()"
-                           sec:authentication="name">
-                        </p>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" th:href="@{/static}">홈</a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- Admin only -->
-                        <a class="nav-link active"
-                           sec:authorize="hasAnyRole('ROLE_ADMIN')"
-                           th:href="@{/templates/admin}"
-                        >
-                            Admin
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- login user -->
-                        <a class="nav-link active"
-                           sec:authorize="isAuthenticated()"
-                           th:href="@{/templates/notice}"
-                        >
-                            Notice
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- user -->
-                        <a class="nav-link active"
-                           sec:authorize="hasAnyRole('ROLE_USER')"
-                           th:href="@{/templates/note}"
-                        >
-                            Note
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- not login -->
-                        <a class="nav-link active"
-                           sec:authorize="!isAuthenticated()"
-                           th:href="@{/login}"
-                        >
-                            LogIn
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- not login -->
-                        <a class="nav-link active"
-                           sec:authorize="!isAuthenticated()"
-                           th:href="@{/signup}"
-                        >
-                            Sign Up
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- login user -->
-                        <a class="nav-link active"
-                           sec:authorize="isAuthenticated()"
-                           th:href="@{/logout}"
-                        >
-                            Logout
-                        </a>
-                    </li>
-                </ul>
+    <!-- fragment navigation bar -->
+    <div th:fragment="nav">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <p class="nav-link active" sec:authorize="isAuthenticated()" sec:authentication="name"></p>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" th:href="@{/home}">홈</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" sec:authorize="hasAnyRole('ROLE_ADMIN')" th:href="@{/admin}">Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" sec:authorize="isAuthenticated()" th:href="@{/notice}">Notice</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" sec:authorize="hasAnyRole('ROLE_USER')" th:href="@{/note}">Note</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" sec:authorize="!isAuthenticated()" th:href="@{/login}">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" sec:authorize="!isAuthenticated()" th:href="@{/signup}">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" sec:authorize="isAuthenticated()" th:href="@{/logout}">Log out</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-</div>
+        </nav>
+    </div>
 </body>
 </html>

@@ -5,24 +5,24 @@
     <head th:insert="fragments.html::header"></head>
 </head>
 <body>
-<header th:insert="fragments.html::nav"></header>
-<div class="container">
-    <form class="form-signin" method="post" th:action="@{/login}">
-        <h2 class="form-signin-heading">LogIn</h2>
-        <p>
-            <label for="username" class="sr-only">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
-        </p>
-        <p>
-            <label for="password" class="sr-only">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-        </p>
-        <div>
-            <span>Keep LogIn</span>
-            <input type="checkbox" id="remember-me" name="remember-me" class="form-check-input mt-0" autocomplete="off">
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">LogIn</button>
-    </form>
-</div>
+    <header th:insert="fragments.html::nav"></header>
+    <div class="container">
+        <form class="form-signin" method="post" th:action="@{/login}">
+            <h2 class="form-signin-heading">Log In</h2>
+            <p>
+                <label for="username" class="sr-only">Username</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+            </p>
+            <p>
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+            </p>
+            <div>
+                <span>Keep LogIn</span>
+                <input type="checkbox" id="remember-me" name="remember-me" class="form-check-input mt-0" autocomplete="off">
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+        </form>
+    </div>
 </body>
 </html>
